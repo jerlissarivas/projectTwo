@@ -6,6 +6,8 @@ const bcryptjs = require('bcryptjs');
 const saltRounds = 10;
 const User = require('../models/User.model');
 
+// SIGN UP ROUTE
+
 // .get() route ==> to display the signup form to users
 router.get('/signup', (req, res) => res.render('auth/signup'));
 
@@ -44,6 +46,35 @@ router.post('/signup', (req, res, next) => {
     });
 });
 
+// LOGIN ROUTE
+
+router.get('/login', (req, res) => res.render('auth/login'));
+
+router.post('/login', (req, res, next) => {
+  // console.log('SESSION =====> ', req.session);
+  const { email, password } = req.body;
+  if (!email || !password) {
+    res.render('auth/signup', { errorMessage: 'All fields are mandatory. Please provide your both, email and password.' });
+    return;
+  }
+  //            email: email
+  User.findOne({ email })
+    .then(user => {
+      if (!user) {
+        res.render('auth/login', { errorMessage: 'Email is not registered. Try with other email.' });
+        return;
+      } else if (bcryptjs.compareSync(password, user.passwordHash)) {
+        // res.render('users/user-profile', { user });
+        // req.session.currentUser = user;
+        res.redirect('/userProfile');
+      } else {
+        res.render('auth/login', { errorMessage: 'Incorrect password.' });
+      }
+    })
+    .catch(err => next(err));
+});
+
 router.get('/userProfile', (req, res) => res.render('users/user-profile'));
+// NEED TO ADD ROUTEGUARD TO THIS PORTION SO ONLY LOGGED IN USERS CAN SEE A USER-PROFILE
 
 module.exports = router;
