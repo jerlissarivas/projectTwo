@@ -1,0 +1,9 @@
+<h2>List of Contacts</h2>
+
+<ul>
+{{#each contacts}}
+  <li><a href="/contacts/{{this._id}}">{{this.firstName}} {{this.lastName}}</a></li>
+{{/each}}
+</ul>
+
+<button><a href="/addcontact">Add New Contact</a></button>
