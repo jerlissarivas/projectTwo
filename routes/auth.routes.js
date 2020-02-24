@@ -101,6 +101,7 @@ router.post("/signup", (req, res, next) => {
 router.get("/logout", (req, res) => {
   // when using passport we can log the user out by calling req.logout(). Since we are not using passport we have to call req.session.destroy() in order to kill the session and remove the data it is currently storing.
   // req.logout();
+  console.log("user succesfully logged out")
   req.session.destroy();
   res.redirect("/");
 });
