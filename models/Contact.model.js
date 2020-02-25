@@ -9,7 +9,7 @@ const contactSchema = new Schema({
   firstName: {
     type: String,
     trim: true,
-    required: [true, 'First name is required.'],
+    // required: [true, 'First name is required.'],
   },
   lastName: {
     type: String,
@@ -31,15 +31,15 @@ const contactSchema = new Schema({
   },
   personalEmail: {
     type: String,
-    required: [true, 'Email is required.'],
-    unique: true,
+    // required: [true, 'Email is required.'],
+    // unique: true,
     lowercase: true,
     trim: true
   },
   workEmail: {
     type: String,
-    required: [true, 'Email is required.'],
-    unique: true,
+    // required: [true, 'Email is required.'],
+    // unique: true,
     lowercase: true,
     trim: true
   },
@@ -59,9 +59,8 @@ const contactSchema = new Schema({
   },
   socialProfile: {
     type: String,
-    unique: true,
-    trim: true,
-    required: true
+    // unique: true,
+    trim: true
   },
   birthday: {
     type: Date,
