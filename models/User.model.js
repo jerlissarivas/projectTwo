@@ -12,23 +12,21 @@ const userSchema = new Schema({
   firstName: {
     type: String,
     trim: true,
-    required: [true, 'First name is required.'],
   },
   lastName: {
     type: String,
     trim: true,
-    required: [true, 'Last name is required.'],
+    // required: [true, 'Last name is required.']
   },
   email: {
     type: String,
-    required: [true, 'Email is required.'],
-    unique: true,
+    // required: [true, 'Email is required.'],
     lowercase: true,
     trim: true
   },
-  passwordHash: {
+  password: {
     type: String,
-    required: [true, 'Password is required.']
+    // required: [true, 'Password is required.']
   }
 }, {
   timestamps: true

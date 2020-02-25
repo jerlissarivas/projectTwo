@@ -31,14 +31,14 @@ const contactSchema = new Schema({
   },
   personalEmail: {
     type: String,
-    // required: [true, 'Email is required.'],
+    required: [true, 'Email is required.'],
     unique: true,
     lowercase: true,
     trim: true
   },
   workEmail: {
     type: String,
-    // required: [true, 'Email is required.'],
+    required: [true, 'Email is required.'],
     unique: true,
     lowercase: true,
     trim: true
@@ -60,7 +60,8 @@ const contactSchema = new Schema({
   socialProfile: {
     type: String,
     unique: true,
-    trim: true
+    trim: true,
+    required: true
   },
   birthday: {
     type: Date,
