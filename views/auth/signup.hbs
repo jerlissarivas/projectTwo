@@ -17,6 +17,9 @@
 
     <button type="submit">Create account</button>
 
-    {{!-- error message will be added here --}}
+    {{#if message}}
+      <p class="error">{{ message }}</p>
+    {{/if}}
+    
   </form>
 </div>

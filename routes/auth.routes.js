@@ -9,14 +9,26 @@ const User = require("../models/User.model");
 const bcryptjs = require('bcryptjs');
 const bcryptSalt = 10; // Marcos's code
 
+const passport = require('passport');
+
+
 // LOGIN ROUTE
 
 router.get("/login", (req, res, next) => {
-  res.render("auth/login", { message: "PAGE NOT FOUND" });
+  res.render("auth/login");
 });
 
+// router.post(
+//         "/login",
+//         passport.authenticate("local", {
+//             successRedirect: "/profile",
+//             failureRedirect: "/auth/login",
+//             passReqToCallback: true
+//         })
+//     );
+
 router.post("/login", (req, res, next) => {
-  // Find the user by the username
+  // Find the user by the email
   User.findOne({ email: req.body.email })
       .then(userFromDB => {
           // If a user is not returned from a DB, send back message that no such user exists in DB
@@ -31,8 +43,8 @@ router.post("/login", (req, res, next) => {
           if (bcryptjs.compareSync(req.body.password, userFromDB.password)) {
               req.session.user = userFromDB;
               res.redirect("/");
-          } else {
-              res.render("auth/login", { message: "Incorrect Password" });
+            } else {
+                res.render("auth/login", { message: "Incorrect Password" });
               return;
           }
       })
@@ -46,54 +58,42 @@ router.get("/signup", (req, res, next) => {
 });
 
 router.post("/signup", (req, res, next) => {
-  // get the username and password from the request
-  const username = req.body.username;
-  const email = req.body.email;
-  const password = req.body.password;
-  console.log(username)
+
+    const { firstName, lastName, email, password } = req.body;
+ 
 
   // make sure that we have both of the fields as nonempty characters // it is not a bad idea for this to also be done on the frontend
-  if (username === "" || password === "" || email === "") {
+  if (firstName === "" || lastName === "" || email === "" || password === "") {
       res.render("auth/signup", {
-          message: "Indicate username, email, and password"
+        message: "All fields are mandatory!"
       });
       return;
   }
 
-  // check if the username is already registered in the database and if so return the message
-  User.findOne({ username }, "username", (err, user) => {
-      if (user !== null) {
-          res.render("auth/signup", {
-              message: "The username already exists"
-          });
-          return;
+  // check if the email is already registered in the database and if so return the message
+  User.findOne({email})
+  .then(userFromDB => {
+        if(userFromDB){
+        // send the message that user exist and return
+        res.render("auth/signup", {
+        message: "This email already exists" 
+        });
+        return;
       }
+      
+// if all of the checks have passed we encrypt the password and create a new user
+    const salt = bcryptjs.genSaltSync(bcryptSalt);
+    const hashPass = bcryptjs.hashSync(password, salt);
 
-      // if all of the checks have passed we encrypt the password and create a new user
-      const salt = bcryptjs.genSaltSync(bcryptSalt);
-      const hashPass = bcryptjs.hashSync(password, salt);
-
-      const newUser = new User({
-          username,
-          email,
-          password: hashPass
-      });
-
-      // save new user to the database and then set his session
-      newUser
-          .save()
-          .then(newlyCreatedUser => {
-              // we will automatically sign in the user after they sign up so that they do not have to later go to login screen after the signup
-              req.session.user = newlyCreatedUser;
-              res.redirect("/");
-          })
-          .catch(err => {
-              console.log(err);
-
-              // if there was an error we will render the same page the user is on and this time pass a variable that can be used there. In this case it will be a message to display the error
-              res.render("auth/signup", { message: "Something went wrong" });
-          });
-  });
+      User.create({ firstName, lastName, email, password: hashPass })
+      .then(newUser =>{
+          req.session.user = newUser;
+          res.redirect("/profile");
+        })
+        .catch(err => next(err))
+        
+  })
+  .catch(err => next(err))
 });
 
 // LOGOUT
@@ -105,5 +105,29 @@ router.get("/logout", (req, res) => {
   req.session.destroy();
   res.redirect("/");
 });
+
+// PROFILE ROUTE
+
+router.get('/profile', (req, res) => res.render('users/user-profile.hbs'))
+
+// GOOGLE LOGIN
+
+router.get("/google-login", passport.authenticate("google", {
+    scope: ["https://www.googleapis.com/auth/userinfo.profile",
+            "https://www.googleapis.com/auth/userinfo.email",
+            "https://www.googleapis.com/auth/calendar",
+            "https://www.googleapis.com/auth/calendar.events",
+            "https://www.googleapis.com/auth/calendar.events.readonly",
+            "https://www.googleapis.com/auth/calendar.readonly",
+            "https://www.googleapis.com/auth/calendar.settings.readonly"
+        ]
+  }));
+
+  router.get("/google/callback", passport.authenticate("google", {
+    successRedirect: "/profile",
+    successMessage: 'Google login successful!',
+    failureRedirect: "/login",
+    failureMessage: 'Google login failed. Please try to login manually.'
+  }));
 
 module.exports = router;

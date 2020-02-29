@@ -3,7 +3,24 @@ const router  = express.Router();
 
 const Contact = require('../models/Contact.model');
 
-/* GET home page */
+// Contact Details 
+
+router.get('/contacts/:id', (req, res, next) => {
+  Contact.findById(req.params.id)
+    // .populate('cast')
+  .then(contactDetails => {
+  res.render('contacts/contact-details', {
+    details: contactDetails
+    });
+  })
+  .catch(err => {
+  console.log(`Error while getting contact details from the DB: ${err}`);
+  next(err);
+  });
+});
+
+// Get Contacts 
+
 router.get('/contacts', (req, res, next) => {
   Contact.find()
   .then(contactsFromDB => {
@@ -14,6 +31,8 @@ router.get('/contacts', (req, res, next) => {
     next(err);
   });
 });
+
+// Add Contacts
 
 router.get('/addcontact', (req, res, next) => {
   res.render('contacts/new-contact');
@@ -32,18 +51,9 @@ router.post('/addcontact', (req, res, next) => {
     });
 });
 
-router.get('/contacts/:id', (req, res, next) => {
-  Contact.findById(req.params.id)
-    // .populate('cast')
-    .then(contactDetails => {
-      res.render('contacts/contact-details', {
-        details: contactDetails
-      });
-    })
-    .catch(err => {
-      console.log(`Error while getting contact details from the DB: ${err}`);
-      next(err);
-    });
-});
+// Update Contacts 
+
+
+
 
 module.exports = router;
