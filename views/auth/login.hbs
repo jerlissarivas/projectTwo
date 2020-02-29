@@ -6,12 +6,13 @@
 
     <label for="input-password">Password</label>
     <input type="password" name="password" id="input-password" placeholder="********" />
+    
+    {{#if message}}
+      <p class="error">{{ message }}</p>
+    {{/if}}
 
     <button type="submit">Login</button>
 
-    {{#if errorMessage}}
-      <p class="error">{{errorMessage}}</p>
-    {{/if}}
 
   </form>
 </div>
