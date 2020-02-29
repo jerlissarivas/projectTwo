@@ -8,36 +8,39 @@ const Contact = require('../models/Contact.model');
 router.post('/contacts/:id/delete', (req, res, next) => {
   Contact.findByIdAndRemove(req.params.id)
   .then(contact => {
-    res.direct('/contacts');
+    res.redirect('/contacts');
   })
-  .catch(err => console.log(`ERROR DELETING CONTACT`, err))
+  .catch(err => {
+    console.log(`Error while getting contact from the DB: ${err}`);
+    next(err);
+  });
 })
 
 
 // UPDATE CONTACTS ROUTE
 
-// router.get('/contacts/:id/edit', (req, res, next) => {
-//   console.log("Contact info: ", req.body);
-//   Contact.findById(req.params.id)
-//   .populate('contacts')
-//   .then(contacts => {
-//       res.render('contacts/contact-edit', contacts)
-//   })
-//   .catch(err => {
-//       console.log(`Error while getting contact details from DB: ${err}`);
-//   });
-// });
+router.get('/contacts/:id/edit', (req, res, next) => {
+  console.log("Contact info: ", req.body);
+  Contact.findById(req.params.id)
+  .populate('contacts')
+  .then(contacts => {
+      res.render('contacts/contact-edit', {details: contacts})
+  })
+  .catch(err => {
+      console.log(`Error while getting contact details from DB: ${err}`);
+  });
+});
 
-// router.post('/contacts/:id/edit', (req, res, next) => {
-//   console.log("Contact info: ", req.body);
-//   Contact.findByIdAndUpdate({_id: req.params.id}, req.body)
-//   .then(() => {
-//     res.redirect('/contacts');
-//   })
-//   .catch(err => {
-//       console.log(`Error while updating contact details on DB: ${err}`)
-//   });
-// });
+router.post('/contacts/:id/edit', (req, res, next) => {
+  console.log("Contact info: ", req.body);
+  Contact.findByIdAndUpdate({_id: req.params.id}, req.body, {new: true})
+  .then(() => {
+    res.redirect('/contacts');
+  })
+  .catch(err => {
+      console.log(`Error while updating contact details on DB: ${err}`)
+  });
+});
 
 // Contact Details 
 
