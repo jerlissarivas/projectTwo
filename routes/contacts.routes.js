@@ -3,6 +3,16 @@ const router  = express.Router();
 
 const Contact = require('../models/Contact.model');
 
+// Delete contact
+
+router.post('/contacts/:id/delete', (req, res, next) => {
+  Contact.findByIdAndRemove(req.params.id)
+  .then(contact => {
+    res.redirect('/contacts');
+  })
+  .catch(err => console.log(`Error while deleting contact from DB: ${err}`))
+})
+
 // Contact Details 
 
 router.get('/contacts/:id', (req, res, next) => {
