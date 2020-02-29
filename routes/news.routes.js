@@ -1,4 +1,7 @@
-router.get("/", (req, res, next) => {
+const express = require('express');
+const router = express.Router();
+
+router.get("/news", (req, res, next) => {
   var url = 'http://newsapi.org/v2/everything?' +
          'q=Apple&' +
          'from=2020-02-29&' +
@@ -12,3 +15,5 @@ router.get("/", (req, res, next) => {
     console.log(err)
   })
 });
+
+module.exports = router;
