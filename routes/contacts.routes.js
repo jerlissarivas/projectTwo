@@ -3,36 +3,47 @@ const router  = express.Router();
 
 const Contact = require('../models/Contact.model');
 
+// DELETE CONTACT
+
+router.post('/contacts/:id/delete', (req, res, next) => {
+  Contact.findByIdAndRemove(req.params.id)
+  .then(contact => {
+    res.direct('/contacts');
+  })
+  .catch(err => console.log(`ERROR DELETING CONTACT`, err))
+})
+
+
 // UPDATE CONTACTS ROUTE
 
-router.get('/contacts/:id/edit', (req, res, next) => {
-  console.log("Contact info: ", req.body);
-  Contact.findById(req.params.id)
-  .populate('contacts')
-  .then(contacts => {
-      res.render('contacts/contact-edit', contacts)
-  })
-  .catch(err => {
-      console.log(`Error while getting contact details from DB: ${err}`);
-  });
-});
+// router.get('/contacts/:id/edit', (req, res, next) => {
+//   console.log("Contact info: ", req.body);
+//   Contact.findById(req.params.id)
+//   .populate('contacts')
+//   .then(contacts => {
+//       res.render('contacts/contact-edit', contacts)
+//   })
+//   .catch(err => {
+//       console.log(`Error while getting contact details from DB: ${err}`);
+//   });
+// });
 
-router.post('/contacts/:id/edit', (req, res, next) => {
-  console.log("Contact info: ", req.body);
-  Contact.findByIdAndUpdate({_id: req.params.id}, req.body)
-  .then(() => {
-    res.redirect('/contacts');
-  })
-  .catch(err => {
-      console.log(`Error while updating contact details on DB: ${err}`)
-  });
-});
+// router.post('/contacts/:id/edit', (req, res, next) => {
+//   console.log("Contact info: ", req.body);
+//   Contact.findByIdAndUpdate({_id: req.params.id}, req.body)
+//   .then(() => {
+//     res.redirect('/contacts');
+//   })
+//   .catch(err => {
+//       console.log(`Error while updating contact details on DB: ${err}`)
+//   });
+// });
 
 // Contact Details 
 
 router.get('/contacts/:id', (req, res, next) => {
   Contact.findById(req.params.id)
-    // .populate('cast')
+  // .populate('contacts')
   .then(contactDetails => {
   res.render('contacts/contact-details', {
     details: contactDetails
@@ -80,7 +91,7 @@ router.post('/addcontact', (req, res, next) => {
 
 // router.get('/contacts/:id/edit', (req, res) => {
 //   Contact.findById(req.params.id)
-//     // .populate('author')
+//     .populate('contacts')
 //     .then(foundContacts => {
 //       console.log('contact:', foundContacts);
 //       res.render('contacts/contact-edit', { foundContacts: contacts });
