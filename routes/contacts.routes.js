@@ -90,18 +90,4 @@ router.post('/addcontact', (req, res, next) => {
     });
 });
 
-// Update Contacts 
-
-// router.get('/contacts/:id/edit', (req, res) => {
-//   Contact.findById(req.params.id)
-//     .populate('contacts')
-//     .then(foundContacts => {
-//       console.log('contact:', foundContacts);
-//       res.render('contacts/contact-edit', { foundContacts: contacts });
-//       })
-//     .catch(err => console.log(`Err while getting the contacts from the  DB for the update: ${err}`));
-// });
-
-
-
 module.exports = router;
