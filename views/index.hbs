@@ -1,2 +1,7 @@
-<h1>{{title}}</h1>
-<p>Welcome to {{title}}</p>
+{{!-- <h1>{{title}}</h1>
+<p>Welcome to ConnectPro</p> --}}
+<h1> Welcome to ConnectPro </h1>
+
+{{#each articles}}
+   <li>{{this.title}}</li>
+{{/each}}
