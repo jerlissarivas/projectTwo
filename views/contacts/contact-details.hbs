@@ -35,4 +35,10 @@
 <b>Notes:</b> {{details.notes}}
 </p>
 
-<button> <a href="/contacts/{{contacts._id}}/delete"></a></button>
+<form action="/contacts/{{details._id}}/delete" method="POST">
+  <button type="submit"> Delete Contact </button>
+</form>
+
+<form action="/contacts/{{details._id}}/edit" method="GET">
+  <button type="submit"> Edit Contact </button>
+</form>
