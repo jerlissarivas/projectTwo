@@ -1,0 +1,11 @@
+<h2>Group Name</h2>
+
+{{groupDetails.groupName}}
+
+<form action="/groups/{{groupDetails._id}}/delete" method="POST">
+  <button type="submit"> Delete Group </button>
+</form>
+
+<form action="/groups/{{groupDetails._id}}/edit" method="GET">
+  <button type="submit"> Edit Group </button>
+</form>
