@@ -1,0 +1,57 @@
+<h1>Edit {{ details.firstName }} {{details.lastName}} </h1>
+
+<form action="/contacts/{{details._id}}/edit" method="POST">
+  <label for="firstName"> First Name </label>
+  <input type="text" name="firstName" id="firstName" value="{{ details.firstName }}">
+  <br>
+
+  <label for="lastName"> Last Name </label>
+  <input type="text" name="lastName" id="lastName" value="{{ details.lastName }}">
+  <br>
+
+  <label for="companyOne"> Company 1 </label>
+  <input type="text" name="companyOne" id="companyOne" value="{{ details.companyOne }}">
+  <br>
+
+  <label for="companyTwo"> Company 2 </label>
+  <input type="text" name="companyTwo" id="companyTwo" value="{{ details.companyTwo }}">
+  <br>
+
+  <label for="avatar"> Choose Your Avatar </label>
+  <input id="avatar" type="file" name="avatar" value="{{ details.avatar }}">
+  <br>
+
+  <label for="personalEmail"> Personal Email </label>
+  <input type="text" name="personalEmail" id="personalEmail" value="{{ details.personalEmail }}">
+  <br>
+
+  <label for="workEmail"> Work Email </label>
+  <input type="text" name="workEmail" id="workEmail" value="{{ details.workEmail }}">
+  <br>
+
+  <label for="group"> Group </label>
+  <input type="text" name="group" id="group" value="{{ details.group }}">
+  <br>
+
+  <label for="personalAddress"> Personal Address </label>
+  <input type="text" name="personalAddress" id="personalAddress" value="{{ details.personalAddress }}">
+  <br>
+
+  <label for="workAddress"> Work Address </label>
+  <input type="text" name="workAddress" id="workAddress" value="{{ details.workAddress }}">
+  <br>
+
+  <label for="socialProfile"> Social Media Profile </label>
+  <input type="text" name="socialProfile" id="socialProfile" value="{{ details.socialProfile }}">
+  <br>
+
+  <label for="birthday"> Birthday </label>
+  <input type="date" name="birthday" id="birthday" value="{{ details.birthday }}">
+  <br>
+
+  <label for="notes"> Contact Notes </label>
+  <input type="text" name="notes" id="notes" value="{{ details.notes }}">
+  <br>
+
+  <button type="submit"> Save the updates </button>
+</form>
