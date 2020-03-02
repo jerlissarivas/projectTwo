@@ -1,0 +1,10 @@
+<h1>Edit: {{ groupDetails.groupName }} </h1>
+
+<form action="/groups/{{groupDetails._id}}/edit" method="POST">
+  <label for="groupName"> Group Name </label>
+  <input type="text" name="groupName" id="groupName" value="{{ groupDetails.groupName }}">
+  <br>
+
+
+  <button type="submit"> Save the updates </button>
+</form>

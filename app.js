@@ -73,6 +73,7 @@ const index = require('./routes/index');
 app.use('/', require('./routes/auth.routes'));
 app.use('/', require('./routes/contacts.routes'));
 app.use('/', require('./routes/news.routes'));
+app.use('/', require('./routes/group.routes'));
 // app.use('/', require('./routes/calendar.routes'));
 
 
