@@ -31,51 +31,9 @@
     </div>
   </nav>
 
-  {{!-- TESTING THE HTML  --}}
-
-    <!-- Create a button and give it an ID that we'll reference later --> 
-    <br>
-    <button type="button" id="schedule-editor">Add New Event</button>
-
-    {{{body}}}
-
-    <script>
-      var btn = document.getElementById('schedule-editor');
-      btn.addEventListener('click', function() {
-        // Invoke the schedule editor when a user clicks on the button
-        nylas.scheduler.show({
-          auth: {
-            // Account access_token with active calendar scope
-            accessToken: "eal4786kyq3VkTwHX9OFYqxVDxmeor", 
-          },
-          style: {
-            // Style the schedule editor
-            tintColor: '#32325d',
-            backgroundColor: 'white',
-          },
-          defaults: {
-            event: {
-              title: 'Event Name',
-              duration: 30,
-            },
-          },
-        });
-      });
-    </script>
-
-  <script src="https://schedule.nylas.com/schedule-editor/v1.0/schedule-editor.js" type="text/javascript"></script>
   
-  {{!-- TESTING THE HTML  --}}
 
-  
-{{!-- =-=-=-=-=-=-=-=-=-=-=-=-=-=-
-Embed Tockiy Calendar:
-  <div data-tockify-component="mini" data-tockify-calendar="ironhackproject2"></div>
-<script data-cfasync="false" data-tockify-script="embed"
-                                  src="https://public.tockify.com/browser/embed.js"></script>
-
-  <a href="https://tockify.com/tkf2/submitEvent/9de91d900a4947018c0da4e160971023" target="_blank">Submit an Event</a>
-=-=-=-=-=-=-=-=-=-=-=-=-=-=- --}}
+  {{{body}}}
 
 
   <script src="/javascripts/script.js"></script>
