@@ -1,0 +1,9 @@
+<h2>Groups</h2>
+
+<ul>
+{{#each groups}}
+  <li><a href="/groups/{{this._id}}">{{this.groupName}}</a></li>
+{{/each}}
+</ul>
+
+<button><a href="/addgroup">Add New Group</a></button>

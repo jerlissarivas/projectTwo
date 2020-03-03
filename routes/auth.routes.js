@@ -27,34 +27,6 @@ router.post(
   })
 );
 
-// router.post("/login", (req, res, next) => {
-//   // Find the user by the email
-//   User.findOne({
-//       email: req.body.email
-//     })
-//     .then(userFromDB => {
-//       // If a user is not returned from a DB, send back message that no such user exists in DB
-//       if (userFromDB === null) {
-//         res.render("auth/login", {
-//           message: "That email was not found in the system"
-//         });
-//         return;
-//       }
-
-//       // Compare users encrypted password with an encryption from DB and redirect to home page if they match otherwise redirect to login
-//       if (bcryptjs.compareSync(req.body.password, userFromDB.password)) {
-//         req.session.user = userFromDB;
-//         res.redirect("/");
-//       } else {
-//         res.render("auth/login", {
-//           message: "Incorrect Password"
-//         });
-//         return;
-//       }
-//     })
-//     .catch(err => next(err));
-// });
-
 // SIGNUP ROUTE
 
 router.get("/signup", (req, res, next) => {
@@ -72,6 +44,7 @@ router.post("/signup", (req, res, next) => {
 
 
   // make sure that we have both of the fields as nonempty characters // it is not a bad idea for this to also be done on the frontend
+
   if (firstName === "" || lastName === "" || email === "" || password === "") {
     res.render("auth/signup", {
       message: "All fields are mandatory!"
@@ -113,6 +86,7 @@ router.post("/signup", (req, res, next) => {
     })
     .catch(err => next(err))
 });
+
 
 // LOGOUT
 
