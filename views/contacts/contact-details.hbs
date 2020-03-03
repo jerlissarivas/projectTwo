@@ -17,7 +17,7 @@
 <b>Work Email:</b> {{details.workEmail}}
 <br>
 <br>
-<b>Group:</b> {{details.group}}
+<b>Group:</b> {{groups.groupName}}
 <br>
 <br>
 <b>Personal Address:</b> {{details.personalAddress}}
@@ -35,10 +35,13 @@
 <b>Notes:</b> {{details.notes}}
 </p>
 
-<form action="/contacts/{{details._id}}/delete" method="POST">
-  <button type="submit"> Delete Contact </button>
-</form>
 
 <form action="/contacts/{{details._id}}/edit" method="GET">
   <button type="submit"> Edit Contact </button>
+</form>
+
+<br>
+
+<form action="/contacts/{{details._id}}/delete" method="POST">
+  <button type="submit"> Delete Contact </button>
 </form>
