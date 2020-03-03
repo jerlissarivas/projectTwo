@@ -3,11 +3,50 @@ const router  = express.Router();
 
 const Contact = require('../models/Contact.model');
 
+// DELETE CONTACT
+
+router.post('/contacts/:id/delete', (req, res, next) => {
+  Contact.findByIdAndRemove(req.params.id)
+  .then(contact => {
+    res.redirect('/contacts');
+  })
+  .catch(err => {
+    console.log(`Error while getting contact from the DB: ${err}`);
+    next(err);
+  });
+})
+
+
+// UPDATE CONTACTS ROUTE
+
+router.get('/contacts/:id/edit', (req, res, next) => {
+  console.log("Contact info: ", req.body);
+  Contact.findById(req.params.id)
+  .populate('contacts')
+  .then(contacts => {
+      res.render('contacts/contact-edit', {details: contacts})
+  })
+  .catch(err => {
+      console.log(`Error while getting contact details from DB: ${err}`);
+  });
+});
+
+router.post('/contacts/:id/edit', (req, res, next) => {
+  console.log("Contact info: ", req.body);
+  Contact.findByIdAndUpdate({_id: req.params.id}, req.body, {new: true})
+  .then(() => {
+    res.redirect('/contacts');
+  })
+  .catch(err => {
+      console.log(`Error while updating contact details on DB: ${err}`)
+  });
+});
+
 // Contact Details 
 
 router.get('/contacts/:id', (req, res, next) => {
   Contact.findById(req.params.id)
-    // .populate('cast')
+  // .populate('contacts')
   .then(contactDetails => {
   res.render('contacts/contact-details', {
     details: contactDetails
@@ -42,7 +81,7 @@ router.post('/addcontact', (req, res, next) => {
   // console.log(req.body);
   Contact.create(req.body)
     .then(newContact => {
-      // console.log('saved contact is: ', newContact);
+      console.log('saved contact is: ', newContact);
       res.redirect('/contacts'); // --> redirect to the page that will show us the list of contacts
     })
     .catch(err => {
@@ -50,10 +89,5 @@ router.post('/addcontact', (req, res, next) => {
       next(err);
     });
 });
-
-// Update Contacts 
-
-
-
 
 module.exports = router;
