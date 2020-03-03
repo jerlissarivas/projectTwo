@@ -10,7 +10,7 @@ router.get("/", (req, res, next) => {
          'apiKey=54546ecca52e4e1698544474ecb7329e';
  axios.get(url)
  .then(data => {
-    let articles = data.articles
+    let articles = data.data.articles
     console.log(data.data.articles)
     res.render('index', {articles})
   })
