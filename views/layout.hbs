@@ -8,18 +8,6 @@
   <link rel="stylesheet" href="/stylesheets/style.css" />
 </head>
 <body>
-{{!-- 
-  <nav>
-    <ul>
-      <li id="to-right">
-        <a href="/signup">Signup</a> <span> | </span>
-      </li>
-      <li id="to-right">
-        <a href="/login">Login</a>
-      </li>
-    </ul>
-  </nav> --}}
-
 
   <nav>
     {{!-- here we separate the links into divs in order to use flexbox to space the links out to each end of the screen. (auth links to the far right and other links for the app in the far left) --}}
@@ -34,6 +22,7 @@
       <a href="/profile"></a>
       <a href="/logout">Logout</a>
       <a href="/contacts">Contacts</a>
+      <a href="/groups">Groups</a>
       {{else}}
       <a href="/login">Login</a>
        <a href="/google-login">Login with Google</a>
@@ -42,16 +31,10 @@
     </div>
   </nav>
 
-  {{{body}}}
-{{!-- =-=-=-=-=-=-=-=-=-=-=-=-=-=-
-Embed Tockiy Calendar:
-  <div data-tockify-component="mini" data-tockify-calendar="ironhackproject2"></div>
-<script data-cfasync="false" data-tockify-script="embed"
-                                  src="https://public.tockify.com/browser/embed.js"></script>
+  
 
-  <a href="https://tockify.com/tkf2/submitEvent/9de91d900a4947018c0da4e160971023" target="_blank">Submit an Event</a>
-=-=-=-=-=-=-=-=-=-=-=-=-=-=- --}}
-<iframe src="https://calendar.google.com/calendar/embed?src=2994qrfm9u69prmrjf99q3od3g%40group.calendar.google.com&ctz=America%2FNew_York" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
+  {{{body}}}
+
 
   <script src="/javascripts/script.js"></script>
 </body>
