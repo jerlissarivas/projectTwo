@@ -9,15 +9,6 @@ a {
 
 /*# sourceMappingURL=style.css.map */
 
-
-.calendar {
-  /* width: 400px;
-  height: 100px;
-  display: block;
-  margin-left: 50px;
-  margin-right: auto; */
-}
-
 .home {
   height: 90vh;
   display: flex;
@@ -26,6 +17,11 @@ a {
 
 .calendar {
   height: 50vh;
+  /* width: 400px;
+  height: 100px;
+  display: block;
+  margin-left: 50px;
+  margin-right: auto; */
 }
 
 .articles {
