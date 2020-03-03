@@ -56,3 +56,25 @@
 {{!-- =-=-=-=-=-=-=-=-=-=-=-=-=-=- --}}
 
 {{!-- <iframe src="https://calendar.google.com/calendar/embed?src=ii3296vtnjvn1veip660uv2b54%40group.calendar.google.com&ctz=America%2FNew_York" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe> --}}
+<div class="home">
+
+   <div class = "calendar">
+      
+   </div>
+
+   <div class="news">
+      {{#each articles}}
+      <li>
+         <img class="articles" src="{{this.urlToImage}}" alt="Image not found buddy, thanks random API">
+         <a href="{{this.url}}">
+
+            {{this.title}}
+         </a>
+
+      </li>
+      {{/each}}
+   </div>
+
+{{!-- <iframe src="https://calendar.google.com/calendar/embed?src=2994qrfm9u69prmrjf99q3od3g%40group.calendar.google.com&ctz=America%2FNew_York" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe> --}}
+
+</div>

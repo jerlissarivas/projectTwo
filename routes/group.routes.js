@@ -63,6 +63,7 @@ router.get('/groups/:id', (req, res, next) => {
 router.get('/groups', (req, res, next) => {
   Group.find()
   .then(groupsFromDB => {
+    console.log(groupsFromDB)
   res.render('groups/groups', {groups: groupsFromDB});
   })
   .catch(err => {

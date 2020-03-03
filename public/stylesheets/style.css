@@ -17,3 +17,46 @@ a {
   margin-left: 50px;
   margin-right: auto; */
 }
+
+.home {
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.calendar {
+  height: 50vh;
+}
+
+.articles {
+  width: 14vw;
+  display: flex;
+  flex-direction: column;
+  margin: 1vh 0;
+}
+
+.news {
+  display: flex;
+  border: 1px gray solid;
+  border-radius: 15px;
+
+}
+
+.news li {
+  list-style: none;
+  margin: 0 1vw;
+}
+
+.news img {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 15px;
+}
+
+.news a {
+  text-decoration: none;
+  /* margin-right: 5vw; */
+}
+
+/*# sourceMappingURL=style.css.map */
