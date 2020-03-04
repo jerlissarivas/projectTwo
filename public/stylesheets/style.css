@@ -68,4 +68,53 @@ a {
   /* margin-right: 5vw; */
 }
 
+
+
+/* CSS for landing page */
+
+
+body{  
+  font-family:Helvetica;   
+  font-size:1em;
+  width:100%;
+  margin:0px;
+  padding:0px;
+  
+}
+
+.button{  
+  display: inline-block;
+  color:white;
+  background-color:#00b2b0;
+  padding:5px;
+  border-radius:5px;  
+  text-shadow:1px 1px 1px grey;
+}
+
+.title-buttons{ 
+  /* border: 3px black solid; */
+  margin-top: 22vh;
+  text-align: center;
+  color: white;
+  background: rgba(0,0,0,.7);
+  padding: 2vh 2vw 4vh 2vw;
+  font-size: 1.2em;
+  border-radius: 20px;
+  min-width: 220px;
+}
+
+.title-buttons a {
+  text-decoration: none;
+}
+
+.landing-page {
+  padding:30px;  
+  height: 91vh; 
+  background-image: url("https://d2ydtwisqcxv72.cloudfront.net/calendar-in-docs-sheets-header.jpg");
+  filter:grayscale(40%) ;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
 /*# sourceMappingURL=style.css.map *
