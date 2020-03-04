@@ -59,12 +59,11 @@
   <a href="https://tockify.com/tkf2/submitEvent/9de91d900a4947018c0da4e160971023" target="_blank">Submit an Event</a>
 </div>
 
-   <div class="news">
+<div class="news">
       {{#each articles}}
       <li>
-         <img class="articles" src="{{this.urlToImage}}" alt="Image not found buddy, thanks random API">
          <a href="{{this.url}}">
-
+            <img class="articles" src="{{this.urlToImage}}" alt="Image not found buddy, thanks random API">
             {{this.title}}
          </a>
 

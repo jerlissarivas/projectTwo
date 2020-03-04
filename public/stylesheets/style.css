@@ -1,5 +1,5 @@
 body {
-  padding: 50px;
+  padding: 3% 10% 10% 10%;;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
@@ -13,12 +13,18 @@ a {
   height: 90vh;
   display: flex;
   flex-direction: column;
+  text-align: center;
 }
 
 .calendar {
   /* height: 50vh; */
+<<<<<<< HEAD
   width: 400px;
   height: 100px;
+=======
+  width: 50%;
+  /* height: 30%;
+>>>>>>> 671f34d0b5f0811971a4217945b637282498915c
   display: block;
   margin-left: 50px;
   margin-right: auto;
@@ -32,17 +38,24 @@ a {
 }
 
 .news {
-  display: flex;
+  /* display: flex; */
   border: 1px gray solid;
   border-radius: 15px;
 
 }
 
 .news li {
+  width: 20%;
+  display: inline-block;
+  vertical-align: top;
   list-style: none;
   margin: 0 1vw;
 }
 
+.news ul{
+  margin: 0 auto;
+  text-align: center;
+}
 .news img {
   display: flex;
   flex-direction: column;
