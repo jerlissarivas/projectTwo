@@ -1,5 +1,9 @@
 <h2>Group Name: {{groupDetails.groupName}}</h2>
 
+{{#each group.contacts}}
+   {{this}}
+{{/each}}
+
 <br>
 
 <form action="/groups/{{groupDetails._id}}/edit" method="GET">

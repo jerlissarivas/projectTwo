@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const ObjectId = require("mongodb").ObjectID;
 
 const {
   Schema,
@@ -44,7 +45,8 @@ const contactSchema = new Schema({
     trim: true
   },
   group: {
-    type: String,
+    // type: String,
+    type: ObjectId,
     enum: []
   },
   personalAddress: {
