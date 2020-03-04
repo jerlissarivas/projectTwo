@@ -18,18 +18,12 @@ a {
 }
 
 .calendar {
-  /* height: 50vh; */
-<<<<<<< HEAD
-=======
+  height: 50vh;
   width: 400px;
   height: 100px;
->>>>>>> 7e0c8ad995014c91610abc3e27bcf1ea4b2abee3
   width: 50%;
-  /* height: 30%;
-  display: block;
-  margin-left: 50px;
-  margin-right: auto;
 }
+
 
 .articles {
   width: 14vw;
@@ -40,10 +34,11 @@ a {
 
 .news {
   /* display: flex; */
-  border: 1px gray solid;
+  /* border: 1px gray solid; */
   border-radius: 15px;
-
 }
+
+
 
 .news li {
   width: 20%;
