@@ -1,5 +1,6 @@
 body {
-  padding: 3% 10% 10% 10%;;
+  padding: 3% 10% 10% 10%;
+  ;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
@@ -18,13 +19,8 @@ a {
 
 .calendar {
   /* height: 50vh; */
-<<<<<<< HEAD
-  width: 400px;
-  height: 100px;
-=======
   width: 50%;
   /* height: 30%;
->>>>>>> 671f34d0b5f0811971a4217945b637282498915c
   display: block;
   margin-left: 50px;
   margin-right: auto;
@@ -52,10 +48,11 @@ a {
   margin: 0 1vw;
 }
 
-.news ul{
+.news ul {
   margin: 0 auto;
   text-align: center;
 }
+
 .news img {
   display: flex;
   flex-direction: column;
