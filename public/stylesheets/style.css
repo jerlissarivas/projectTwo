@@ -19,6 +19,11 @@ a {
 
 .calendar {
   /* height: 50vh; */
+<<<<<<< HEAD
+=======
+  width: 400px;
+  height: 100px;
+>>>>>>> 7e0c8ad995014c91610abc3e27bcf1ea4b2abee3
   width: 50%;
   /* height: 30%;
   display: block;
@@ -65,4 +70,4 @@ a {
   /* margin-right: 5vw; */
 }
 
-/*# sourceMappingURL=style.css.map */
+/*# sourceMappingURL=style.css.map *
