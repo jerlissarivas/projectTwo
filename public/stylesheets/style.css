@@ -11,7 +11,7 @@ a {
 
 .home {
   height: 90vh;
-  display: flex;
+  display: inline-block;
   flex-direction: column;
   text-align: center;
 }
@@ -23,17 +23,18 @@ a {
   display: block;
   margin-left: 50px;
   margin-right: auto;
+  
 }
 
 .articles {
   width: 14vw;
-  display: flex;
+  display: inline-block;
   flex-direction: column;
   margin: 1vh 0;
 }
 
 .news {
-  /* display: flex; */
+  display: inline-block;
   border: 1px gray solid;
   border-radius: 15px;
 
