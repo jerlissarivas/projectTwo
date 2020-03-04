@@ -1,5 +1,7 @@
 const express = require('express');
 const router  = express.Router();
+const ObjectId = require("mongodb").ObjectID;
+
 
 const Contact = require('../models/Contact.model');
 const Group = require('../models/Group.model')
@@ -65,7 +67,7 @@ router.get('/contacts/:id/edit', (req, res, next) => {
   .populate('contacts')
   .then(contacts => {
       res.render('contacts/contact-edit', {details: contacts})
-  })
+    })
   .catch(err => {
       console.log(`Error while getting contact details from DB: ${err}`);
   });
@@ -84,13 +86,42 @@ router.post('/contacts/:id/edit', (req, res, next) => {
 
 // Contact Details 
 
+// router.get('/contacts/:id', (req, res, next) => {
+//   Contact.findById(req.params.id)
+//   // .populate('contacts')
+//   .then(contactDetails => {
+//     Group.findById(ObjectId(contactDetails.group))
+//       .then(group =>
+//         console.log(group)
+//         )
+//         .catch(err => next(err))
+      
+//     console.log(contactDetails)
+//   res.render('contacts/contact-details', {
+//     details: contactDetails,
+//     groupDetails: group
+//     });
+//   })
+//   .catch(err => {
+//   console.log(`Error while getting contact details from the DB: ${err}`);
+//   next(err);
+//   });
+// });
+
 router.get('/contacts/:id', (req, res, next) => {
   Contact.findById(req.params.id)
   // .populate('contacts')
   .then(contactDetails => {
-  res.render('contacts/contact-details', {
-    details: contactDetails
-    });
+     Group.findById(ObjectId(contactDetails.group))
+     .then(group => {
+      // let groupName = group.groupName
+      console.log(group)
+      console.log("=-=-=-=-=-=-=-=", groupName)
+      res.render('contacts/contact-details', {contactDetails: contactDetails, group: group})
+     })
+      .catch(err => {
+        console.log(err)
+      })
   })
   .catch(err => {
   console.log(`Error while getting contact details from the DB: ${err}`);
