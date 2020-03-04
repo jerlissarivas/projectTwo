@@ -101,7 +101,7 @@ router.get("/logout", (req, res) => {
 
 // PROFILE ROUTE
 
-router.get('/profile', (req, res) => res.render('users/user-profile.hbs'))
+// router.get('/profile', (req, res) => res.render('users/user-profile.hbs'))
 
 // GOOGLE LOGIN
 
