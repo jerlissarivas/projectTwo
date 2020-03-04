@@ -6,36 +6,73 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>{{title}}</title>
   <link rel="stylesheet" href="/stylesheets/style.css" />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 </head>
 <body>
-
-  <nav>
+    <nav>
     {{!-- here we separate the links into divs in order to use flexbox to space the links out to each end of the screen. (auth links to the far right and other links for the app in the far left) --}}
-    <div>
+    {{!-- <div>
       <a href="/profile">Home</a>
-    </div>
+    </div> --}}
     <div>
       {{!-- I use conditional rendering here to choose whether to display login and signup or just logout based on the global variable that was set up in the app.js using res.locals.currentUser --}}
       {{!-- if currentUser exists (a person has logged in), then I just want to show the logout link. Else I will display the login and signup links --}}
       {{#if currentUser}}
-      <span>Hi, {{ currentUser.firstName }}</span>
-      <a href="/profile"></a>
-      <a href="/logout">Logout</a>
-      <a href="/contacts">Contacts</a>
-      <a href="/groups">Groups</a>
+      {{!-- <span>Hi, {{ currentUser.firstName }}</span> --}}
+      {{!-- <a href="/profile"></a> --}}
+      {{!-- <a href="/logout">Logout</a> --}}
+      {{!-- <a href="/contacts">Contacts</a> --}}
+      {{!-- <a href="/groups">Groups</a> --}}
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  {{!-- <a class="navbar-brand" href="#">Navbar</a> --}}
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="/profile"> Home <span class="sr-only">(current)</span></a>
+      </li>
+      {{!-- <li class="nav-item">
+        <a class="nav-link" href="#">Link</a>
+      </li> --}}
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Menu
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="/contacts">Contacts</a>
+          <a class="dropdown-item" href="/groups">Groups</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="/logout">Logout</a>
+        </div>
+      </li>
+      {{!-- <li class="nav-item">
+        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+      </li> --}}
+    </ul>
+    {{!-- <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form> --}}
+  </div>
+</nav>
+<br>
       {{else}}
       <a href="/login">Login</a>
-       <a href="/google-login">Login with Google</a>
+       {{!-- <a href="/google-login">Login with Google</a> --}}
       <a href="/signup">Signup</a>
       {{/if}}
     </div>
   </nav>
-
   
 
   {{{body}}}
 
-
   <script src="/javascripts/script.js"></script>
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 </body>
 </html>

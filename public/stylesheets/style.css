@@ -1,5 +1,6 @@
 body {
-  padding: 3% 10% 10% 10%;;
+  padding: 3% 10% 10% 10%;
+  ;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
@@ -26,6 +27,7 @@ a {
   
 }
 
+
 .articles {
   width: 14vw;
   display: inline-block;
@@ -37,8 +39,9 @@ a {
   display: inline-block;
   border: 1px gray solid;
   border-radius: 15px;
-
 }
+
+
 
 .news li {
   width: 20%;
@@ -48,10 +51,11 @@ a {
   margin: 0 1vw;
 }
 
-.news ul{
+.news ul {
   margin: 0 auto;
   text-align: center;
 }
+
 .news img {
   display: flex;
   flex-direction: column;
