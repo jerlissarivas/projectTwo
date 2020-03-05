@@ -16,29 +16,38 @@ a {
   flex-direction: column;
   text-align: center;
 }
+.dashboard {
+  display: flex;
+  justify-content: space-between;
+  width: 98vw;
 
+}
 .calendar {
   /* height: 50vh; */
-  width: 400px;
-  height: 100px;
+  width: 47vw;
+  padding: 0;
+  margin: 0;
+  /* height: 100px;
   display: block;
   margin-left: 50px;
-  margin-right: auto;
+  margin-right: auto; */
   
 }
 
-
 .articles {
-  width: 14vw;
+  width: 10vw;
   display: inline-block;
   flex-direction: column;
   margin: 1vh 0;
 }
 
 .news {
-  display: inline-block;
+  width: 47vw;
+  padding: 0;
+  margin: 0;
+  /* display: inline-block;
   border: 1px gray solid;
-  border-radius: 15px;
+  border-radius: 15px; */
 }
 
 
